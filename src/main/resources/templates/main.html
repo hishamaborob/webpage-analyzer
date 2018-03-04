@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Webpage Analyzer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1 align="center">Webpage Analyzer</h1>
+<form id="webpageInfo" action="" method="post">
+    <p>Webpage URL: <input type="text" name="url" value=""/></p>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+<div th:if="${url != null}">
+    <p th:text="${url}"/>
+</div>
+<div th:if="${analysisResults != null}">
+    <table>
+        <tr data-th-each="analysisSingleResult : ${analysisResults}">
+            <td align="left" data-th-text="${analysisSingleResult.analysis}+':'"></td>
+            <td align="left" data-th-text="${analysisSingleResult.results}"></td>
+        </tr>
+    </table>
+</div>
+<div th:if="${errorMsg != null}">
+    <p th:text="${errorMsg}"/>
+</div>
+</body>
+</html>
